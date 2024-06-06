@@ -3,6 +3,9 @@
 
 class Amenity:
     """Amenity class for the airbnb project"""
-    
-    amenity_id = ""
+    def __init__(self, id, name):
+        self.id = id
+        self.name = name
+
+    id = ""
     name = ""

@@ -3,6 +3,10 @@
 
 class Review:
     """A class review"""
-    user_id = ""
-    place_id = ""
+    def __init__(self, id, text):
+        def __init__(self, id, text):
+            self.id = id
+            self.text = text
+
+    id = ""
     text = ""
