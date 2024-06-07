@@ -1,14 +1,16 @@
 #!/usr/bin/python3
 """class Place for Airbnb project"""
+from base_model import BaseModel
 
-class Place:
+
+class Place():
     """Place class for Airbnb project"""
     def __init__(self, id, name, description, number_rooms, number_bathrooms, max_guest, price_by_night, latitude, longitude):
-        self.id = id
+        self.__id = id
         self.name = name
         self.description = description
         self.number_rooms = number_rooms
-        self. number_bathrooms = number_bathrooms
+        self.number_bathrooms = number_bathrooms
         self.max_guest = max_guest
         self.price_by_night = price_by_night
         self.latitude = latitude
