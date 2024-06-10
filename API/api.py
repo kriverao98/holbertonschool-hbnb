@@ -1,6 +1,6 @@
 from flask import request, jsonify, abort #type: ignore
 from Model.user import User
-from Persistence.data_manager import DataManager
+from Persistence.DataManager import DataManager
 
 
 def route_manager(app):

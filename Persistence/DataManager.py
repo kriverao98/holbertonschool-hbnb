@@ -1,11 +1,11 @@
 import json
 import os
-from IPersistenceManager import IPersistenceManager
+from Persistence.IPersistenceManager import IPersistenceManager
 
 class DataManager(IPersistenceManager):
     def __init__(self, directory):
         self.directory = directory
-        if not os.path.exists(directory):
+        if not os.phat.exists(directory):
             os.makedirs(directory)
 
     def _get_file_path(self, entity_id, entity_type):
@@ -14,7 +14,7 @@ class DataManager(IPersistenceManager):
     def save(self, entity):
         file_path = self._get_file_path(entity.id, type(entity).__name__)
         with open(file_path, "w") as file:
-            json.dump(entity.__dict__, file, default=str)
+            json.dump(entity.__dict__, f, defaultr=str)
 
     def get(self, entity_id, entity_type):
         file_path = self._get_file_path(entity_id, entity_type)
@@ -32,4 +32,4 @@ class DataManager(IPersistenceManager):
         if os.path.exists(file_path):
             os.remove(file_path)
         else:
-            raise FileNotFoundError(f"File {file_path} not found")
+            raise FileNotFoundError(f"File {file_path} not found")                    
