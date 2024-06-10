@@ -1,35 +1,48 @@
 import json
-import os
-from Persistence.IPersistenceManager import IPersistenceManager
+from persistence.IPersistenceManager import IPersistenceManager
+from model.BaseModel import BaseModel
+
 
 class DataManager(IPersistenceManager):
-    def __init__(self, directory):
-        self.directory = directory
-        if not os.phat.exists(directory):
-            os.makedirs(directory)
+    def __init__(self):
+        self.storage = {}
+        self.load_countries()
 
-    def _get_file_path(self, entity_id, entity_type):
-        return os.path.join(self.directory, f"{entity_type}_{entity_id}.json")
+    def load_countries(self):
+        try:
+            with open('countries.json', 'r') as f:
+                countries = json.load(f)
+            self.storage['Country'] = {
+                country['code']: country for country in countries}
+        except FileNotFoundError:
+            self.storage['Country'] = {}
 
     def save(self, entity):
-        file_path = self._get_file_path(entity.id, type(entity).__name__)
-        with open(file_path, "w") as file:
-            json.dump(entity.__dict__, f, defaultr=str)
+        if not isinstance(entity, BaseModel):
+            raise TypeError("entity must be an instance of BaseModel")
+        entity_type = type(entity).__name__
+        if entity_type not in self.storage:
+            self.storage[entity_type] = {}
+        self.storage[entity_type][entity.id] = entity
+        entity.save()
 
     def get(self, entity_id, entity_type):
-        file_path = self._get_file_path(entity_id, entity_type)
-        if not os.path.exists(file_path):
-            return None
-        with open(file_path, "r") as file:
-            data = json.load(file)
-            return data
+        if entity_type in self.storage:
+            return self.storage[entity_type].get(entity_id)
+        return None
 
     def update(self, entity):
-        self.save(entity)
+        if not isinstance(entity, BaseModel):
+            raise TypeError("entity must be an instance of BaseModel")
+        entity_type = type(entity).__name__
+        if entity_type in self.storage and entity.id in self.storage[entity_type]:
+            self.storage[entity_type][entity.id] = entity
+            entity.save()
+        else:
+            raise ValueError("Entity not found in storage")
 
     def delete(self, entity_id, entity_type):
-        file_path = self._get_file_path(entity_id, entity_type)
-        if os.path.exists(file_path):
-            os.remove(file_path)
+        if entity_type in self.storage and entity_id in self.storage[entity_type]:
+            del self.storage[entity_type][entity_id]
         else:
-            raise FileNotFoundError(f"File {file_path} not found")                    
+            raise ValueError("Entity not found in storage")
