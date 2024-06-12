@@ -6,7 +6,7 @@ from base_model import BaseModel
 class Amenity(BaseModel):
     """Amenity class for the airbnb project"""
     def __init__(self, id, name):
-        self.__id = id
+        self.id = id
         self.name = name
 
     id = ""
