@@ -14,9 +14,8 @@ def route_manager(app):
 
     @app.route('/users', methods=['POST', 'GET'])
     def create_users():
-        
+        data = request.get_json()
         if request.method == 'POST':
-            data = request.get_json()
             if data is None:
                 abort(400, "Not a json")
             user = User(data['email'], data['password'], data['first_name'], \
@@ -27,9 +26,9 @@ def route_manager(app):
 
             return jsonify({"message": "Successfully created new user", "user": output}), 201
 
-        elif request.method == 'GET':
-            with open("file_storage.json", 'r') as f:
-                
+        if request.method == 'GET':
+            file = DataManager()
+            return jsonify(file.get(user))
 
     @app.route('/users/<user_id>', methods=['GET'])
     def user_details():
