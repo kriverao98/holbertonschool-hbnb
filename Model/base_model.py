@@ -15,5 +15,5 @@ class BaseModel:
         if created_at != updated_at:
             self.update_at = str(datetime.now())
 
-        def update(self):
-            self.update_at = str(datetime.now())
+    def update(self):
+        self.update_at = str(datetime.now())

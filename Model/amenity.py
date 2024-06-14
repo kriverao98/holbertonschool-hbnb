@@ -9,3 +9,4 @@ class Amenity(BaseModel):
         self.name = name
         super().__init__()
    
+    

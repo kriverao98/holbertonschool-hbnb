@@ -12,7 +12,7 @@ class User(BaseModel):
         self.last_name = last_name
         super().__init__()
 
-    def update(self):
-            self.update_at = str(datetime.now())
+
+    
 
     

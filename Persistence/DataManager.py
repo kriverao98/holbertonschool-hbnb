@@ -69,6 +69,6 @@ class DataManager(IPersistenceManager):
         if entity_type in self.storage and entity_id in self.storage[entity_type]:
             del self.storage[entity_type][entity_id]
             with open('file_storage.json', 'w', encoding="utf-8") as file:
-                json.dump(self.storage, file)
+                json.dump(self.storage, file, indent=4)
         else:
             raise ValueError("Entity not found in storage")
