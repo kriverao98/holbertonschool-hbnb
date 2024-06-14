@@ -23,14 +23,16 @@ def route_manager(app, file):
             if data is None:
                 abort(400, "Not a json")
             
-            if 'email' not in data or 'first_name' not in data or 'last_name' not in data:
-                abort(400, "Missing data")
+            # if 'email' not in data or 'first_name' not in data or 'last_name' not in data:
+            #     abort(400, "Missing data")
             user = User(data['email'], data['first_name'], data['last_name'])
-           
-            file.save(user)
+            if user.unique_user(file.storage['User'], user.email) == True:
+            
+                file.save(user)
 
-            return jsonify({"message": "Successfully created new user"}), 201
-
+                return jsonify({"message": "Successfully created new user"}), 201
+            else:
+                return jsonify({"message": "failed to create user"}), 409
         else:
             return jsonify(file.storage["User"]), 200
 
