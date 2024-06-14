@@ -18,7 +18,7 @@ To install this project, follow these steps:
 ## Usage
 
 This project allows its user to create, delete, and update the "User", "City", "Country", "Place", "Review", and "Amenity" classes in a HBnB clone.
-![File storage output example](usr/holbertonschool-hbnb/)
+![File storage output example](https://github.com/kriverao98/holbertonschool-hbnb/blob/main/file_storage.jpg)
 
 ## Authors
 
