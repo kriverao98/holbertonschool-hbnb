@@ -7,7 +7,7 @@ ENV PYTHONBUFFERED 1
 
 WORKDIR /usr/holbertonschool-hbnb
 
-RUN pip install uuid/ datetime/ pycountry/
+RUN pip install uuid datetime pycountry
 
 COPY requirements.txt / /usr/holbertonschool-hbnb/
 
@@ -18,9 +18,9 @@ COPY Model/ Model/
 COPY Persistence/ Persistence/
 COPY main.py .
 
-EXPOSE 5000
+EXPOSE 8000
 
-ENV PORT 5000
+ENV PORT 8000
 
 VOLUME ["/usr/holbertonschool-hbnb/data"]
 
