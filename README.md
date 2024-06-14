@@ -5,6 +5,7 @@ This project implements a backend for the Holberton School HBnB application. The
 
 ## Table of Contents
 - [Installation](#installation)
+- [Usage](#usage)
 - [Authors](#authors)
 - [License](#license)
 
@@ -13,6 +14,11 @@ To install this project, follow these steps:
 1. Clone the repository: `git clone git@github.com:kriverao98/holbertonschool-hbnb.git`
 2. Navigate to the project directory: `cd holbertonschool-hbnb`
 3. Install the required dependencies: `pip install -r requirements.txt`
+
+## Usage
+
+This project allows its user to create, delete, and update the "User", "City", "Country", "Place", "Review", and "Amenity" classes in a HBnB clone.
+
 
 ## Authors
 
