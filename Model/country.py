@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """A country class for the Airbnb project"""
-from base_model import BaseModel
-import pycountry
+from Model.base_model import BaseModel
+import pycountry #type: ignore
 
 
 class Country(BaseModel):
@@ -10,7 +10,6 @@ class Country(BaseModel):
         self.name = str(name)
         self.code = code
 
-    name = ""
     
     def get_code(code):
         """Method for obtaining alpha-2 code for Country class

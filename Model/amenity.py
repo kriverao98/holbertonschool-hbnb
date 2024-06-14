@@ -1,13 +1,11 @@
 #!/usr/bin/python3
 """This is a amenity class for the Airbnb project"""
-from base_model import BaseModel
+from Model.base_model import BaseModel
 
 
 class Amenity(BaseModel):
     """Amenity class for the airbnb project"""
-    def __init__(self, id, name):
-        self.id = id
+    def __init__(self, name):
         self.name = name
-
-    id = ""
-    name = ""
+        super().__init__()
+   
