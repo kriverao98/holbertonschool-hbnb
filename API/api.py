@@ -27,10 +27,12 @@ def route_manager(app, file):
             #     abort(400, "Missing data")
             user = User(data['email'], data['first_name'], data['last_name'])
             if user.unique_user(file.storage['User'], user.email) == True:
-            
-                file.save(user)
+                if user.name_validation() == True:
+                    file.save(user)
 
-                return jsonify({"message": "Successfully created new user"}), 201
+                    return jsonify({"message": "Successfully created new user"}), 201
+                else:
+                    return jsonify({"message": "failed to create user"}), 409
             else:
                 return jsonify({"message": "failed to create user"}), 409
         else:

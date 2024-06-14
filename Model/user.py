@@ -17,3 +17,8 @@ class User(BaseModel):
             if user_data['email'] == email:
                 return False
         return True
+
+    def name_validation(self):
+        if len(self.first_name) and len(self.last_name) > 0:
+            return True
+        return False
