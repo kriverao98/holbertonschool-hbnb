@@ -11,3 +11,10 @@ class User(BaseModel):
         self.first_name = first_name
         self.last_name = last_name
         super().__init__()
+    
+    def unique_user(self, dict, email):
+        for i in dict:
+            if dict[i] != email:
+                return True
+            else:
+                return False
