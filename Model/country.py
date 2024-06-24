@@ -11,7 +11,7 @@ class Country(BaseModel):
         self.code = code
 
     
-    def get_code(code):
+    def get_code(self):
         """Method for obtaining alpha-2 code for Country class
 
         Args:

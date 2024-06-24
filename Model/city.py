@@ -10,3 +10,11 @@ class City(BaseModel):
         self.country_code = country_code
         super().__init__()
   
+
+    def unique_city(self, cities_dict, name):
+        for city_id, city_data in cities_dict.items():
+            if city_data['name'] == name:
+                return False
+        return True
+
+        
